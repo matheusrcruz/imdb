@@ -10,7 +10,7 @@ export class ImdbService {
 
   private apikey: string = 'k_sl6qrbs9';
   private endPointMDB: string = `https://imdb-api.com/en/API/MostPopularMovies/${this.apikey}}`;
-  private urlPostimg: string = `https://imdb-api.com/en/API/Poters/${this.apikey}`;
+  private urlPostimg: string = `https://imdb-api.com/en/API/Posters/${this.apikey}`;
 
   private baseUrl:string = 'http://localhost:3000/items';
 
@@ -25,6 +25,13 @@ export class ImdbService {
 
     public getPosters(id: string): Observable<any>{
       return this.httpClient.get<any>(this.urlPostimg + id);
+    }
+    public putPosters(id: string, body: any ){
+      return this.httpClient.put(`${this.baseUrl}/${id}`, body)
+      .subscribe((data) =>{
+        return;
+      })
+
     }
 
 
